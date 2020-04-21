@@ -13,7 +13,6 @@ public class CorrectEqualsUsage {
     public static void main(String[] args) {
         CorrectEqualsUsage usage = new CorrectEqualsUsage();
         System.out.println(usage.isFoo("abc"));
-
         System.out.println(usage.isEquals((1.0f - 0.9f), (0.9f - 0.8f)));
 
     }
