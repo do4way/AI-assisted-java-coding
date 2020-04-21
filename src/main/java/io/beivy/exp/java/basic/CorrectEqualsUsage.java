@@ -1,7 +1,5 @@
 package io.beivy.exp.java.basic;
 
-import java.math.BigDecimal;
-
 public class CorrectEqualsUsage {
 
     public boolean isEquals(float data, float anotherData) {
