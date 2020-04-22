@@ -1,0 +1,34 @@
+package io.beivy.exp.java.bloomfilter;
+
+import java.util.BitSet;
+
+public class BloomFilter {
+
+    private static final int DEFAULT_SIZE = 2 << 24;
+
+    private static final int[] SEEDS = new int[] { 3, 13, 46, 71, 91, 134 };
+
+    private BitSet bits = new BitSet(DEFAULT_SIZE);
+
+    private SimpleHash[] func = new SimpleHash[SEEDS.length];
+
+    public BloomFilter() {
+        for (int i = 0; i < SEEDS.length; i++) {
+            func[i] = new SimpleHash(DEFAULT_SIZE, SEEDS[i]);
+        }
+    }
+
+    public void add(Object value) {
+        for (SimpleHash f : func) {
+            bits.set(f.hash(value), true);
+        }
+    }
+
+    public boolean contains(Object value) {
+        boolean ret = true;
+        for (SimpleHash f : func) {
+            ret = ret & bits.get(f.hash(value));
+        }
+        return ret;
+    }
+}
