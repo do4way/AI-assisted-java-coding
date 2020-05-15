@@ -61,11 +61,19 @@ public class CreateOrderThread extends Thread{
 			}
 
 			SalesSystem.orders.put(orderDate, order);
+
 			id++;
 		} catch (IllegalArgumentException e){
             //e.printStackTrace();
             //not showing exception stack trace here because it will wash away Profiler's running log
         }
+    }
+
+    public Order getOrder(Date orderDate) {
+        if(SalesSystem.orders.containsKey(orderDate)) {
+            return SalesSystem.orders.get(orderDate);
+        }
+        return null;
     }
 
 }
