@@ -8,6 +8,7 @@ public class CorrectEqualsUsage {
 
     public boolean isFoo(String str) {
         return str.equals("foo");
+        // return str.equals("foo");
     }
 
     public static void main(String[] args) {
